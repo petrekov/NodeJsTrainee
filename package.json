@@ -5,7 +5,7 @@
   "main": "dist/app.js",
   "scripts": {
     "start": "tsc && node dist/app.js",
-    "test": "echo \"No test specified\"" //TODO: dodělat
+    "test": "echo \"No test specified\""
   },
   "author": "",
   "license": "ISC",
