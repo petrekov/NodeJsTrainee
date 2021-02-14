@@ -1,14 +1,22 @@
 import { Router } from "express";
 
+/**
+ * Parent class for routing controller configuration
+ */
 export class CustomRouter
 {    
     router : Router;
 
-    constructor(){
+    constructor()
+    {
         this.router = Router();  
     }
 
-    getRouter() : Router{
+    /**
+     * Return in child configured router
+     */
+    getRouter() : Router
+    {
         return this.router;
     }
 }
