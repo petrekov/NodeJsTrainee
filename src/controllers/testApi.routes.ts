@@ -17,11 +17,15 @@ export class testApiRouter extends CustomRouter implements IRouter
     configure()
     {
         this.router.get('/', (request, response):any => {
-            return response.json(this.testApiController.returnTestString());
+            return response.json(this.testApiController.getUsers());
         });   
         
         this.router.post('/', (request, response):any => {
             return response.json(this.testApiController.createUser(request.body as userModel));
+        }); 
+
+        this.router.delete('/byName', (request, response):any => {
+            return response.json(this.testApiController.removeUserByName(request.query.name as string));
         }); 
     }
 }

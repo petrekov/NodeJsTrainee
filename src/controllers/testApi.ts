@@ -1,26 +1,56 @@
 import { userModel } from "../models/testApi/userModel";
+import { writeFileSync, readFileSync } from 'fs';
 
 /**
  * Testing api controller for crud actions
  */
 export class testApiController 
 {
+  private static collection_users : userModel[] = [];
+
   /**
    * Method to return some testing text
    */
-  returnTestString() : string 
+  getUsers() : userModel[] 
   {
-    return "This is just some silly testing text";
+    this.loadState();
+    return testApiController.collection_users;
   }
 
   /**
    * Method for create and return given user 
-   * @param newUser Given user
+   * @param user Given user
    */
-  createUser(newUser : userModel) : userModel 
+  createUser(user : userModel) : string 
   {
-    //TODO: If name is not settet them is created user without name
-    return new userModel(newUser.name,newUser.age,newUser.sex);
+    let newUser = new userModel(user.name,user.age,user.sex);
+    console.log(newUser);
+    console.log(user);
+
+    testApiController.collection_users.push(newUser)
+    this.saveState();
+    return testApiController.collection_users.length.toString();
+    //TODO: If name is not settet then is created user without name
+    //return testApiController.collection_users[testApiController.collection_users.length - 1];
+  }
+
+  removeUserByName(name : string){
+    let indexOf : number;
+
+    if((indexOf = testApiController.collection_users.findIndex(x=>x.name == name)) != null){
+        testApiController.collection_users.splice(indexOf, 1);
+        this.saveState();
+    }
+  }
+
+  private saveState() : void
+  {
+    writeFileSync('file.txt', JSON.stringify(testApiController.collection_users));
+  } 
+  
+  private loadState() : void
+  {
+    testApiController.collection_users = JSON.parse(readFileSync('file.txt', 'utf8')) as userModel[];
   }
 }
 
