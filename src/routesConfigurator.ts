@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { PersonControllerRouter } from './controllers/personController.routes';
 import { testApiRouter } from './controllers/testApi.routes';
 
 /**
@@ -18,5 +19,6 @@ routes.get('/', (request, response):any => {
 
 // Registration of endpoints
 routes.use('/testApi', new testApiRouter().getRouter());
+routes.use('/person', new PersonControllerRouter().getRouter());
 
 export default routes;
