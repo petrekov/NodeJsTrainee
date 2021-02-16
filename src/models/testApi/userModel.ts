@@ -9,8 +9,8 @@ export class userModel
     /** Age of user */
     public age : number; 
 
-    /** Sex of a user (M - male, F - female, O - other) */
-    public sex : "M" | "F" | "O";
+    /** Sex of a user (M - male, F - female, O - other)g */
+    public sex : "M" | "F" | "O"; 
 
     /**
      * 

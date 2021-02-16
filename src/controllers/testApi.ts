@@ -9,7 +9,7 @@ export class testApiController
   private static collection_users : userModel[] = [];
 
   /**
-   * Method to return some testing text
+   * Method to return some testing text.
    */
   getUsers() : userModel[] 
   {
