@@ -17,7 +17,6 @@ export class PersonControllerRouter extends CustomRouter implements IRouter
     {
         this.router.get('/', (request, response):any => {
             return response.json(this.personController.GetUserDetail(response));
-        }); 
-        
+        });       
     }
 }
